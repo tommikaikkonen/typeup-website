@@ -1,0 +1,215 @@
+- content_for :assets do
+	= stylesheet_link_tag 'screen', 'docs'
+
+.docs-container.docs-top
+	.logo
+		.icon-TypeUpLogo-copy
+	.title
+		%h1 Documentation
+.docs-container
+	%nav.nav
+		%a{:href => '/'}
+			Back to main page
+		.heading4 Settings
+		%ul
+			%a{:href => '#fontsize'}
+				%li $fontSize
+			%a{:href => '#linelength'}
+				%li $lineLength
+			%a{:href => '#xheight'}
+				%li $xHeight
+			%a{:href => '#ratio'}
+				%li $ratio
+			%a{:href => '#headinglinesbefore'}
+				%li $headingLinesBefore
+			%a{:href => '#headinglinesafter'}
+				%li $headingLinesAfter
+			%a{:href => '#headingbaselineshift'}
+				%li $headingBaselineShift
+			%a{:href => '#h16linesbefore'}
+				%li $h[1-6]LinesBefore
+			%a{:href => '#h16linesafter'}
+				%li $h[1-6]LinesAfter
+			%a{:href => '#h16baselineshift'}
+				%li $h[1-6]BaselineShift
+			%a{:href => '#pixelsnapbasesize'}
+				%li $pixelSnapBaseSize
+			%a{:href => '#minimumlineheight'}
+				%li $minimumLineHeight
+			%a{:href => '#doublestrandedheadingclasses'}
+				%li $doubleStrandedHeadingClasses
+			%a{:href => '#startmodularscaleat'}
+				%li $startModularScaleAt
+
+		.heading4 Mixins
+		%ul
+			%a{:href => '#typeupbody'}
+				%li typeup-body()
+			%a{:href => '#typeupcontainer'}
+				%li typeup-container()
+			%a{:href => '#typeupspacer'}
+				%li typeup-spacer()
+
+
+
+	%section.section.docs-wrapper
+		:markdown
+
+			## Settings
+
+			### $fontSize
+
+			The base font size.
+
+			* **Default:** `1em`<br/>
+			* **Accepts:** `em` or `px`
+
+			### $lineLength
+
+			The line length or measure. If you want to measure in characters, I suggest you divide the amount of characters you want with 1,5 and turn that into `em`s. For example, 45 characters -> `(45/1,5) * 1em = 30em`.
+
+			* **Default:** `35em`<br/>
+			* **Accepts:** `em` or `px`
+
+			### $xHeight
+
+			Multiplier for the final line height. Use this to fine tune the baseline.
+
+			* **Default:** `1`<br/>
+			* **Accepts:** unitless value
+
+			### $ratio
+
+			Ratio for Modular Scale. You can find a list of ratios [here](https://github.com/scottkellum/modular-scale#ratios). You can also use your own ratio such as `10/9`.
+
+			* **Default:** `fifth()`<br/>
+			* **Accepts:** Modular Scale ratio function or a ratio
+
+			### $headingLinesBefore
+
+			Multiplier for headings' spacing above. The value to be multiplied is the calculated line height of the heading.
+
+			* **Default:** `1`<br/>
+			* **Accepts:** number
+
+			### $headingLinesAfter
+
+			Multiplier for headings' spacing below. The value to be multiplied is the calculated line height of the heading.
+
+			* **Default:** `0`<br/>
+			* **Accepts:** number
+
+			### $headingBaselineShift
+
+			The amount of baseline shift for all headings. Will be applied using `position: relative` and `top: -$headingBaselineShift`
+
+			* **Default:** `0em`<br/>
+			* **Accepts:** `em`
+
+			### $h[1-6]LinesBefore
+
+			Multiplier for a specific heading's spacing above. The value to be multiplied is the calculated line height of the heading.
+
+			* **Default:** `$headingLinesBefore`<br/>
+			* **Accepts:** number
+
+			### $h[1-6]LinesAfter
+
+			Multiplier for a specific heading's spacing below. The value to be multiplied is the calculated line height of the heading.
+
+			* **Default:** `$headingLinesAfter`<br/>
+			* **Accepts:** number
+
+			### $h[1-6]BaselineShift
+
+			The amount of baseline shift for a specific heading. Will be applied using `position: relative` and `top: -$headingBaselineShift`
+
+			* **Default:** `$headingBaselineShift`<br/>
+			* **Accepts:** `em`
+
+			### $pixelSnapBaseSize
+
+			A boolean deciding whether the $fontSize value you give TypeUp is pixel snapped.
+
+			* **Default:** `true`<br/>
+			* **Accepts:** `boolean`
+
+			### $baseFontSize
+
+			The browser base font size that TypeUp does its calculations from. You shouldn't have to change this.
+
+			* **Default:** `16px`<br/>
+			* **Accepts:** `px`
+
+			### $minimumLineHeight
+
+			The minimum line height that TypeUp sets for any element. Unless you're working with some funky typesetting, you don't need to change this.
+
+			* **Default:** `0.7`<br/>
+			* **Accepts:** `number`
+
+			### $doubleStrandedHeadingClasses
+
+			If true, will clone each headings styles into a corresponding .headingN cllass using @extend. This would get you classes like .heading2, .heading3 that you can use to style text without giving it a semantic heading element type.
+
+			* **Default:** `false`<br/>
+			* **Accepts:** `boolean`
+
+			### $startModularScaleAt
+
+			The modular scale number that is assigned to h1. Next one gets 3, next one gets 2, etc. The modular scale cuts off at 0, so with the default settings h5 and h6 get a modular scale number of 0.
+
+			* **Default:** `4`<br/>
+			* **Accepts:** `number`
+
+			## Mixins
+
+			### typeup-body()
+
+				@include typeup-body($fontSize, $lineLength, $xHeight);
+
+			The typeup-body mixin should be included by itself, not under any selector. If you do not supply any arguments, they will be fetched from the settings variables.
+
+			### typeup-container()
+
+				@include typeup-container($fontSize, $lineLength, $xHeight);
+
+			The typeup-container mixin should be used when you want the rules to apply only inside a specific element. It should be included inside a selector. This mixin also establishes the width of the element with $lineLength.
+
+			If you do not supply any arguments, they will be fetched from the settings variables.
+
+			### typeup-spacer()
+
+				@include typeup-spacer(
+				    $size-in-ems,
+
+				    $before: $headingLinesBefore,
+				    // uses default value if not supplied
+
+				    $after: $headingLinesAfter,
+				    // uses default value if not supplied
+
+				    $baselineShift: $headingBaselineShift,
+				    // optional
+
+				    $overrideSpacingWithBaseline: $overrideSpacingWithBaseline
+				    // uses default value if not supplied
+			    );
+
+			The spacer mixin is used to give vertical rhythm to headings inside TypeUp, but you can use it for other things.
+
+			* **$size-in-ems**: font size in `em`s
+			* **$before**: how many lines of spacing above (multiplier). If not supplied, takes the `$headingLinesBefore` value
+			* **$after**: how many lines of spacing below (multiplier). If not supplied, takes the `$headingLinesAfter` value
+			* **$baselineShift**: amount of baseline shift in `em`s
+			* **$overrideSpacingWithBaseline**: boolean. See explanation below.
+
+			This is how it works:
+
+			1. See how many baselines are needed to meet `$size-in-ems`, in half increments
+			1. Multiply by the global line height, pixel snap it
+			1. Multiply that number with before to get `margin-top` and after to get `margin-bottom`
+			1. Apply baseline shift if larger than 0 em with `position:relative` and `top`
+			1. If `$overrideSpacingWithBaseline` is true (default is false), the before and after values are multiplied by the global line height instead of the calculated one.
+
+			You could use the mixin to make simple paragraphs: `@include typeup-spacer($fontSize, 0, 1, 0, false);` which would apply a line-height and some margin to the bottom. Or any other element where you have a differing font size - line height will be adjusted correctly.

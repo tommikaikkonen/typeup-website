@@ -1,0 +1,72 @@
+- @title = "Amicus Project Start"
+- @bodyclass = "newproject"
+
+%section.section.banner
+	.banner-center
+		%h1.huge.icon-TypeUpLogo-copy
+
+		%p.gem-install
+			%code
+				gem install typeup
+
+		%p.intro
+			A Compass extension for <strong>quick typesetting</strong>.
+
+	%nav.top-nav
+		%a.top-link{:href => 'documentation/'} Read the documentation
+
+		%a.top-link{:href => 'https://github.com/tommikaikkonen/type-up'}
+			Get the source from GitHub
+
+%section.section
+	.gif-screen
+	%h2.hide-when-wide How It Works
+	%p.address
+		Set a font size and line length [plus any of the numerous settings].<br/>TypeUp turns those into a set of CSS rules for vertical rhythm in pixel snapped <code>em</code>s.
+
+%section.section.features
+	.text-block-row
+		.text-block
+			:markdown
+				## Features
+
+				* Good defaults
+				* Easy to use
+				* Configurable
+				* Perfect for responsive web design
+				* Modular Scale for font sizing
+
+		.text-block
+			:markdown
+				## Baseline
+
+				TypeUp calculates a good baseline for your typography based on line length. Roll with the defaults or fine tune them with precision.
+
+		.text-block
+			:markdown
+				## Extend
+
+				TypeUp sets type for common elements (`h[1-6]`, `p`, `ul`, `ol`, `pre`, `blockquote`), but with the same mixins TypeUp uses internally you can set your type to any element, fast.
+
+	.text-block-row
+		.text-block
+			:markdown
+				## Prototype
+
+				Design in the browser with speed. You'll have tried 5 different typographic designs before you can set the proper adjustment in Photoshop for one.
+
+		.text-block
+			:markdown
+				## Modular Scale
+
+				TypeUp depends on the [Modular Scale](http://github.com) gem for font sizing, which delivers beautiful heading hierarchies. Customize the scale ratio as you want - TypeUp makes sure each heading has proper spacing.
+
+		.text-block
+			:markdown
+				## License
+
+				Copyright 2013 Tommi Kaikkonen. Released under MIT License.
+
+%section.section.author
+	:markdown
+		Type Up is made by [Tommi Kaikkonen](http://www.kaikkonendesign.fi) ([@tommikaikkonen](https://twitter.com/tommikaikkonen)).

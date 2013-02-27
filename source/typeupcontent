@@ -1,0 +1,37 @@
+# TypeUp
+
+A Compass extension for **quick typesetting** without hours of math curning.
+
+    gem install typeup
+
+* See Examples
+* Read the Documentation
+* Get the Source
+
+## How It Works
+
+Set a font size and line length [plus any of the numerous settings]. TypeUp turns those into a set of CSS rules for vertical rhythm in *pixel snapped* `em`s.
+
+## Features
+
+* Great defaults
+* Easy to use
+* Configurable
+* Perfect for responsive web design
+* Modular Scale for font sizing
+
+## Baseline
+
+TypeUp calculates a good baseline for your typography based on line length. Roll with the great defaults or fine tune them with precision.
+
+## Extend
+
+TypeUp sets type for common elements (`h[1-6]`, `p`, `ul`, `ol`, `pre`, `blockquote`), but with the same mixins TypeUp uses internally you can set your type to any element, fast.
+
+## Prototype
+
+Design in the browser with speed. You'll have tried 5 different typographic designs before you can set the proper adjustment in Photoshop for one.
+
+## Modular Scale
+
+TypeUp depends on the [Modular Scale](#) gem for font sizing, which delivers beautiful heading hierarchies. Customize the scale ratio as you want - TypeUp makes sure each heading has proper spacing.

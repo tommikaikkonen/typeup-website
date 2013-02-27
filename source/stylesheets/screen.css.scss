@@ -1,0 +1,260 @@
+$headingLinesBefore: 0.85;
+$headingLinesAfter: 0.15;
+$headingBaselineShift: 0em;
+$startModularScaleAt: 3;
+$ratio: fourth();
+$doubleStrandedHeadingClasses: true;
+
+@import "typeup";
+$gutters:typeup-calcLineHeight(1em, 35em, 1);
+$total-columns: 12;
+$column-width: $gutters * 3;
+$gutter-width: $gutters;
+$grid-padding: $gutters * 2;
+
+@import "susy";
+@import "compass/typography/links/link-colors";
+@import "compass/css3/images";
+@import "compass/css3/text-shadow";
+@import "compass/css3/box-shadow";
+@import "logofont";
+
+//$headingFont: 'ff-dagny-web-pro', sans-serif;
+//$bodyFont: 'ff-dagny-web-pro', sans-serif;
+$headingFont: 'ff-meta-web-pro', sans-serif;
+$bodyFont: 'ff-meta-web-pro', sans-serif;
+
+$primary: hsl(255, 0, 50);
+
+// ------------------
+//
+// BASIC ELEMENTS
+//
+// ------------------
+
+@include typeup-body(1.1em, 35em, 0.9);
+
+html {
+  padding:0;
+  margin:0;
+}
+body {
+  font-family: $bodyFont;
+  color:#444;
+  margin:0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight:600;
+  font-family: $headingFont;
+  color:darken($primary, 30%);
+}
+
+code {
+  font-family:monospace;
+  display:inline-block;
+  color:$primary;
+  border-color:lighten($primary, 35%);
+  border-width:1px;
+  border-style:solid;
+  border-radius: 4px;
+  padding-left:0.4em;
+  padding-right:0.4em;
+  margin-right:0.3em;
+  margin-left:0.3em;
+}
+
+blockquote {
+  background-color:rgba(0,0,0,0.1);
+  margin-top:0;
+  margin-left:0;
+  margin-right:0;
+}
+
+a {
+  $linkBaseColor: hsl(200,50,50);
+  @include link-colors($linkBaseColor,
+    darken($linkBaseColor, 10%),
+    darken($linkBaseColor, 20%),
+    desaturate($linkBaseColor, 20%)
+  );
+}
+
+// ------------------
+//
+// LAYOUT
+//
+// ------------------
+
+.container {
+  @include container;
+}
+.wrapper {
+  @include container;
+  width:35em;
+  margin: ($typeup-lineHeight * 2) auto;
+  h1 {
+    text-align:center;
+  }
+
+  pre {
+    background-color:$primary;
+    border-radius:8px;
+    code {
+      color: rgba(255,255,255,0.8);
+    }
+  }
+  code {
+    line-height: $typeup-lineHeight;
+  }
+}
+
+.screenshot {
+  border-width:1px;
+  border-style:solid;
+  border-color: lighten($primary, 40%);
+  border-radius:4px;
+  font-size:ms(3);
+  @include typeup-spacer(ms(3), 1, 0, 0em);
+}
+
+.section {
+  @include container;
+}
+
+.features {
+  padding-top:$typeup-lineHeight;
+  padding-bottom:$typeup-lineHeight;
+}
+
+.align-center {
+  text-align:center;
+}
+
+.top-link {
+  text-align:center;
+  @include span-columns(12 omega, 12);
+  @include typeup-spacer(ms(1), 0, 1, 0);
+
+  &:last-child {
+    @include span-columns(12 omega, 12);
+  }
+}
+
+.banner {
+  text-align:center;
+  padding-top: $typeup-lineHeight * 2;
+  padding-bottom: $typeup-lineHeight * 2;
+}
+
+.banner-center {
+  @include span-columns(12 alpha omega);
+}
+
+.intro {
+  font-size: ms(1);
+  @include typeup-spacer(ms(1), 1, 2, 0, true);
+  text-align:center;
+  padding: 0 $typeup-lineHeight;
+}
+
+.gem-install {
+  display:none; // not needed in mobile layout
+  font-size: ms(0);
+  @include typeup-spacer(ms(0), 0.5, 0.5);
+}
+
+.huge {
+  font-size:ms(2);
+  @include typeup-spacer(ms(3), 0, 0);
+}
+
+.address {
+  @include typeup-spacer(ms(0), 0, 0, 0);
+}
+
+@include at-breakpoint(44em 12) {
+
+  .intro {
+    font-size: ms(2);
+    @include typeup-spacer(ms(2), 1, 2, 0, true);
+  }
+
+  .hide-when-wide {
+    display:none;
+  }
+
+  .address {
+    font-size:ms(1);
+    text-align:center;
+    @include typeup-spacer(ms(1), 0, 0, 0);
+  }
+
+  .text-block {
+    @include span-columns(4, 12);
+  }
+
+  .text-block-row {
+    @include clearfix;
+    padding-top:$typeup-lineHeight * 3;
+    padding-bottom:$typeup-lineHeight * 0;
+  }
+
+  .text-block-row .text-block:last-child {
+    @include span-columns(4 omega, 12);
+  }
+
+  .gif-screen {
+    background: url(/images/typeup-optimized3.gif);
+    height:20em;
+    background-size: 100% auto;
+
+    border-width:1px;
+    border-style:solid;
+    border-color: $primary;
+    border-radius:4px;
+    @include box-shadow(0 2px 8px 0 rgba(black, 0.2));
+
+    margin-bottom:$typeup-lineHeight * 1;
+  }
+  .huge {
+    font-size: ms(4);
+    @include typeup-spacer(ms(4), 0, 0);
+  }
+  .banner {
+    padding-top:$typeup-lineHeight * 4;
+    padding-bottom:$typeup-lineHeight * 4;
+  }
+
+  .gem-install {
+    display:block;
+  }
+
+  .top-nav {
+    @include span-columns(6,12);
+    @include pad(3, 3);
+  }
+
+  .top-link {
+    @include span-columns(3, 6);
+
+    &:last-child {
+      @include span-columns(3 omega, 6);
+    }
+  }
+
+  .author {
+    text-align:center;
+    @include typeup-spacer(ms(0), 3, 3, 0);
+  }
+}
+
+@include at-breakpoint(73em 12) {
+  .gif-screen {
+    height:30em;
+  }
+  .banner {
+    padding-top: $typeup-lineHeight * 8;
+    padding-bottom:$typeup-lineHeight * 8;
+  }
+}
