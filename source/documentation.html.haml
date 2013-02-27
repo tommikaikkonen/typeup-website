@@ -10,6 +10,10 @@
 	%nav.nav
 		%a{:href => '/'}
 			Back to main page
+		.heading4 Installation
+		%ul
+			%a{:href => '#fontsize'}
+				%li Installation
 		.heading4 Settings
 		%ul
 			%a{:href => '#fontsize'}
@@ -54,6 +58,11 @@
 
 	%section.section.docs-wrapper
 		:markdown
+			## Installation
+
+			1. Install the gem with `gem install typeup`
+			1. Require TypeUp in your config.rb file with `require 'typeup'`
+			1. Import TypeUp in your stylesheet with `@import "typeup"`
 
 			## Settings
 
